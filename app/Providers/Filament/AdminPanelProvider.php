@@ -19,6 +19,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
+use Illuminate\Database\Eloquent\Model;
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -61,5 +63,10 @@ class AdminPanelProvider extends PanelProvider
             //     Authenticate::class,
             // ])
             ;
+    }
+
+    public function boot()
+    {
+        Model::unguard();
     }
 }
